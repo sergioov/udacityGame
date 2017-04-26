@@ -30,12 +30,11 @@ Enemy.prototype.update = function(dt) {
     if(this.x > 505){
         this.x = - 5;
     }
-    console.log(this.x + ' enemy position' );
 };
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x*width, this.y*height);
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y*height);
 };
 
 // Now write your own player class
@@ -64,17 +63,14 @@ Player.prototype.update = function(dt){
     }
 
     this.cntrl = null;   
-    console.log("i am a update function");
 };
 
 Player.prototype.render = function(){
     ctx.drawImage(Resources.get(this.sprite), this.x*width, this.y*height);
-    console.log("i am a function");
 };
 
 Player.prototype.handleInput = function(key){
     this.cntrl = key;
-    console.log("handle Input: set cntrl to key");
 };
 
 // Now instantiate your objects.
@@ -84,9 +80,17 @@ Player.prototype.handleInput = function(key){
 var allEnemies=[];
 var player = new Player(2,5);
 
-var enemy = new Enemy(0,randomIntFromInterval(2,5),1);
+var enemy = new Enemy(0,randomIntFromInterval(0,4),100);
 
 allEnemies.push(enemy);
+
+var enemy2 = new Enemy(-100,randomIntFromInterval(0,4),100);
+
+allEnemies.push(enemy2);
+
+var enemy3 = new Enemy(-20,randomIntFromInterval(0,4),100);
+
+allEnemies.push(enemy3);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
